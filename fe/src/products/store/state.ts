@@ -1,8 +1,8 @@
-import { ProductItem } from "products/api";
+import { ProductItemDto } from "products/api";
 
 export interface ProductsState {
   readonly loading: boolean;
-  readonly data: ProductItem[];
+  readonly data: ProductItemDto[];
   readonly error?: string;
 }
 

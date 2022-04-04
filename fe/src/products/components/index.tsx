@@ -1,4 +1,4 @@
-import { ProductItem } from "products/api";
+import { ProductItemDto } from "products/api";
 import { getProducts } from "products/store";
 import { useEffect } from "react";
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import { ApplicationState } from "store";
 
 interface PropsFromState {
   loading: boolean;
-  products: ProductItem[];
+  products: ProductItemDto[];
   error?: string;
 }
 
@@ -33,7 +33,7 @@ const Container: React.FC<AllProps> = ({
 
   return (
     <>
-      {products.map(product => (
+      {products.map((product) => (
         <div key={product.id}>{product.id}</div>
       ))}
     </>

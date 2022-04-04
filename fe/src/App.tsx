@@ -7,6 +7,7 @@ import { ProductsList } from "products/components";
 import { ProductDetails } from "productDetails/components";
 import { ApplicationState } from "store";
 import { Store } from "redux";
+import { Home } from "home";
 
 interface Props {
   store: Store<ApplicationState>;
@@ -18,8 +19,9 @@ const App: React.FC<Props> = ({ store }) => {
       <Layout>
         <BrowserRouter>
           <Routes>
-            <Route path="/product" element={<ProductDetails />} />
-            <Route path="/" element={<ProductsList />} />
+            <Route path="/products" element={<ProductsList />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </Layout>

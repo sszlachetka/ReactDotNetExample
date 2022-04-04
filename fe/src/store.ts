@@ -1,4 +1,9 @@
 import {
+  productDetailsInitialState,
+  ProductDetailsReducer,
+  ProductDetailsState,
+} from "productDetails/store";
+import {
   ProductsReducer,
   ProductsState,
   productsInitialState,
@@ -14,15 +19,18 @@ import thunk from "redux-thunk";
 
 export interface ApplicationState {
   products: ProductsState;
+  productDetails: ProductDetailsState;
 }
 
 export const applicationInitialState = {
   products: productsInitialState,
+  productDetails: productDetailsInitialState,
 };
 
 const createRootReducer = () =>
   combineReducers({
     products: ProductsReducer,
+    productDetails: ProductDetailsReducer,
   });
 
 export default function configureStore(

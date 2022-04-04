@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "defaultAxios";
-import { ProductItem } from ".";
+import { ProductItemDto } from ".";
 
-export const getProducts = (): Promise<AxiosResponse<ProductItem[]>> => {
-  return axios.get<ProductItem[]>(`/products`);
+export const getProducts = (): Promise<AxiosResponse<ProductItemDto[]>> => {
+  return axios.get<ProductItemDto[]>(`/products`);
 };

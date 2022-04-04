@@ -1,4 +1,4 @@
-import api, { ProductItem } from "products/api";
+import api, { ProductItemDto } from "products/api";
 import { Dispatch } from "redux";
 
 export enum ProductsActionTypes {
@@ -13,7 +13,7 @@ interface GetProductsStartAction {
 
 interface GetProductsSuccessAction {
   type: ProductsActionTypes.GET_SUCCESS;
-  products: ProductItem[];
+  products: ProductItemDto[];
 }
 
 interface GetProductsErrorAction {
@@ -33,7 +33,7 @@ export const getProductsStart = (): GetProductsStartAction => {
 };
 
 export const getProductsSuccess = (
-  results: ProductItem[]
+  results: ProductItemDto[]
 ): GetProductsSuccessAction => {
   return {
     type: ProductsActionTypes.GET_SUCCESS,
@@ -54,8 +54,8 @@ export const getProducts = () => {
 
     return api
       .getProducts()
-      .then(response => dispatch(getProductsSuccess(response.data)))
-      .catch(error =>
+      .then((response) => dispatch(getProductsSuccess(response.data)))
+      .catch((error) =>
         dispatch(
           getProductsFailure(`Error fetching products: ${error.message}`)
         )

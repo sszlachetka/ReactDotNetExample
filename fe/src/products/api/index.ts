@@ -1,7 +1,7 @@
 import { getProducts } from "./getProducts";
-import { ProductItem } from "./ProductItem";
+import { ProductItemDto } from "./ProductItemDto";
 
 const api = { getProducts };
 
 export default api;
-export type { ProductItem };
+export type { ProductItemDto };
