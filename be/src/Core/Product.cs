@@ -2,5 +2,15 @@
 
 public class Product
 {
-    public string Id { get; set; } = default!;
+    public Product(string id)
+    {
+        Id = id;
+    }
+
+    public static Product New()
+    {
+        return new Product(StringId.New());
+    }
+
+    public string Id { get; }
 }

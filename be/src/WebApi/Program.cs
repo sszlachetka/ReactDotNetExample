@@ -1,5 +1,5 @@
 using Infrastructure;
-using MinimalWebApi;
+using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,5 +29,6 @@ app.UseCors(policy =>
 });
 
 app.MapGetProducts();
+app.MapGetProductDetails();
 
 app.Run();
