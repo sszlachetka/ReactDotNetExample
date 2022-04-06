@@ -1,3 +1,13 @@
+import {
+  Container,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { ProductItemDto } from "products/api";
 import { getProducts } from "products/store";
 import { useEffect } from "react";
@@ -19,7 +29,7 @@ interface PropsFromDispatch {
 
 type AllProps = PropsFromState & PropsFromDispatch;
 
-const Container: React.FC<AllProps> = ({
+const ProductListContainer: React.FC<AllProps> = ({
   loading,
   error,
   products,
@@ -33,11 +43,25 @@ const Container: React.FC<AllProps> = ({
   if (error) return <>{error}</>;
 
   return (
-    <>
-      {products.map((product) => (
-        <ProductListItem key={product.id} product={product} />
-      ))}
-    </>
+    <Container maxWidth="md">
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Price $</TableCell>
+              <TableCell align="right"></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {products.map((product) => (
+              <ProductListItem key={product.id} product={product} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   );
 };
 
@@ -55,6 +79,9 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction>) => {
   };
 };
 
-const ProductList = connect(mapStateToProps, mapDispatchToProps)(Container);
+const ProductList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductListContainer);
 
 export default ProductList;

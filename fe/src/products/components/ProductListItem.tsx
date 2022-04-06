@@ -1,5 +1,5 @@
+import { Button, Link, TableCell, TableRow } from "@mui/material";
 import { ProductItemDto } from "products/api";
-import { Link } from "react-router-dom";
 
 interface Props {
   product: ProductItemDto;
@@ -7,9 +7,18 @@ interface Props {
 
 const ProductListItem: React.FC<Props> = ({ product }) => {
   return (
-    <div>
-      <Link to={`/products/${product.id}`}>{product.id}</Link>
-    </div>
+    <>
+      <TableRow>
+        <TableCell component="th" scope="row">
+          {product.id}
+        </TableCell>
+        <TableCell>{"Some name"}</TableCell>
+        <TableCell align="right">{"122.34"}</TableCell>
+        <TableCell align="right">
+          <Button href={`/products/${product.id}`}>Edit</Button>
+        </TableCell>
+      </TableRow>
+    </>
   );
 };
 
