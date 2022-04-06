@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 import { Layout } from "layout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ProductsList } from "products/components";
+import { ProductList } from "products/components";
 import { ProductDetails } from "productDetails/components";
 import { ApplicationState } from "store";
 import { Store } from "redux";
@@ -19,7 +19,7 @@ const App: React.FC<Props> = ({ store }) => {
       <Layout>
         <BrowserRouter>
           <Routes>
-            <Route path="/products" element={<ProductsList />} />
+            <Route path="/products" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/" element={<Home />} />
           </Routes>
