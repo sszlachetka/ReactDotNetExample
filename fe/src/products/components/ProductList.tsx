@@ -43,25 +43,23 @@ const ProductListContainer: React.FC<AllProps> = ({
   if (error) return <>{error}</>;
 
   return (
-    <Container maxWidth="md">
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Price $</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {products.map((product) => (
-              <ProductListItem key={product.id} product={product} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell align="right">Price $</TableCell>
+            <TableCell align="right"></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {products.map(product => (
+            <ProductListItem key={product.id} product={product} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

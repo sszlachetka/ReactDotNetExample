@@ -16,15 +16,15 @@ interface Props {
 const App: React.FC<Props> = ({ store }) => {
   return (
     <Provider store={store}>
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <Routes>
             <Route path="/products" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/" element={<Home />} />
           </Routes>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </Provider>
   );
 };
