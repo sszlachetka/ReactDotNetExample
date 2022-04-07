@@ -12,8 +12,8 @@ const ProductListItem: React.FC<Props> = ({ product }) => {
         <TableCell component="th" scope="row">
           {product.id}
         </TableCell>
-        <TableCell>{"Some name"}</TableCell>
-        <TableCell align="right">{"122.34"}</TableCell>
+        <TableCell>{product.name}</TableCell>
+        <TableCell align="right">{product.unitPrice}</TableCell>
         <TableCell align="right">
           <Button href={`/products/${product.id}`}>Edit</Button>
         </TableCell>
