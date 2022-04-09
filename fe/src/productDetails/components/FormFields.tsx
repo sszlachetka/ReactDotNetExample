@@ -15,7 +15,7 @@ const formFields: JSX.Element[] = [
 
 const FormFields: React.FC = () => {
   return (
-    <Grid container direction="column" alignContent="stretch" spacing="30px">
+    <Grid container direction="column" alignContent="stretch" spacing={5}>
       {formFields.map((item, idx) => (
         <Grid item key={idx}>
           {item}

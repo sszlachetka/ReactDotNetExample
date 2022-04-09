@@ -9,6 +9,7 @@ import { ApplicationState } from "store";
 import ProductDetailsForm, {
   ProductDetailsFormState,
 } from "./ProductDetailsForm";
+import useOnCancel from "./useOnCancel";
 import useOnSubmit from "./useOnSubmit";
 
 interface PropsFromState {
@@ -30,6 +31,7 @@ const ProductDetails: React.FC<AllProps> = ({
   loadProductDetails,
 }) => {
   const onSubmit = useOnSubmit();
+  const onCancel = useOnCancel();
   const { id } = useParams();
   useEffect(() => {
     id && loadProductDetails(id);
@@ -47,7 +49,13 @@ const ProductDetails: React.FC<AllProps> = ({
     availableFrom: availableFrom,
   };
 
-  return <ProductDetailsForm initialState={initialState} onSubmit={onSubmit} />;
+  return (
+    <ProductDetailsForm
+      initialState={initialState}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+    />
+  );
 };
 
 const mapStateToProps = ({ productDetails }: ApplicationState) => ({

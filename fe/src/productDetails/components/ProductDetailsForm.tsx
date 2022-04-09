@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Form } from "react-final-form";
 import FormFields from "./FormFields";
 
@@ -12,6 +12,7 @@ export interface ProductDetailsFormState {
 interface Props {
   initialState: ProductDetailsFormState;
   onSubmit: (values: ProductDetailsFormState) => void;
+  onCancel: () => void;
 }
 
 async function validate(values: ProductDetailsFormState) {
@@ -21,7 +22,11 @@ async function validate(values: ProductDetailsFormState) {
   return;
 }
 
-const ProductDetailsForm: React.FC<Props> = ({ initialState, onSubmit }) => {
+const ProductDetailsForm: React.FC<Props> = ({
+  initialState,
+  onSubmit,
+  onCancel,
+}) => {
   return (
     <Form
       onSubmit={onSubmit}
@@ -29,9 +34,22 @@ const ProductDetailsForm: React.FC<Props> = ({ initialState, onSubmit }) => {
       validate={validate}
       render={({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit} noValidate>
-          <FormFields />
-          <Button type="submit">Submit</Button>
-          <pre>{JSON.stringify(values)}</pre>
+          <Grid container>
+            <Grid item xs={12} marginBottom={3}>
+              <FormFields />
+            </Grid>
+            <Grid container item xs={12} justifyContent="flex-end">
+              <Grid item>
+                <Button onClick={onCancel}>Cancel</Button>
+              </Grid>
+              <Grid item>
+                <Button type="submit" variant="contained">
+                  Submit
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+          <pre>{JSON.stringify(values, undefined, 2)}</pre>
         </form>
       )}
     />
