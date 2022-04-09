@@ -1,5 +1,4 @@
 import {
-  Container,
   Paper,
   Table,
   TableBody,
@@ -29,7 +28,7 @@ interface PropsFromDispatch {
 
 type AllProps = PropsFromState & PropsFromDispatch;
 
-const ProductListContainer: React.FC<AllProps> = ({
+const ProductList: React.FC<AllProps> = ({
   loading,
   error,
   products,
@@ -77,9 +76,9 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction>) => {
   };
 };
 
-const ProductList = connect(
+const ProductListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductListContainer);
+)(ProductList);
 
-export default ProductList;
+export default ProductListContainer;

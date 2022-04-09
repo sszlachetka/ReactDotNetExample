@@ -1,3 +1,3 @@
-import ProductList from "./ProductList";
+import ProductListContainer from "./ProductListContainer";
 
-export { ProductList };
+export { ProductListContainer };
