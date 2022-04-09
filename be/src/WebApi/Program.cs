@@ -30,5 +30,6 @@ app.UseCors(policy =>
 
 app.MapGetProducts();
 app.MapGetProductDetails();
+app.MapPutProductDetails();
 
 app.Run();

@@ -9,6 +9,7 @@ import { ApplicationState } from "store";
 import ProductDetailsForm, {
   ProductDetailsFormState,
 } from "./ProductDetailsForm";
+import useOnSubmit from "./useOnSubmit";
 
 interface PropsFromState {
   loading: boolean;
@@ -28,7 +29,8 @@ const ProductDetails: React.FC<AllProps> = ({
   productDetails,
   loadProductDetails,
 }) => {
-  let { id } = useParams();
+  const onSubmit = useOnSubmit();
+  const { id } = useParams();
   useEffect(() => {
     id && loadProductDetails(id);
   }, [loadProductDetails, id]);
@@ -37,15 +39,15 @@ const ProductDetails: React.FC<AllProps> = ({
   if (error) return <>{error}</>;
   if (productDetails == null) return <>Product details not found</>;
 
-  const { id: productId, name, unitPrice, availableFrom } = productDetails;
+  const { id: productId, name, price, availableFrom } = productDetails;
   const initialState: ProductDetailsFormState = {
     id: productId,
     name: name,
-    unitPrice: unitPrice,
+    price: price,
     availableFrom: availableFrom,
   };
 
-  return <ProductDetailsForm initialState={initialState} />;
+  return <ProductDetailsForm initialState={initialState} onSubmit={onSubmit} />;
 };
 
 const mapStateToProps = ({ productDetails }: ApplicationState) => ({

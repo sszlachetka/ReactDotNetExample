@@ -1,5 +1,4 @@
-export interface ProductDetailsDto {
-  id: string;
+export interface PutProductDetailsDto {
   name: string;
   price: number;
   availableFrom: Date;

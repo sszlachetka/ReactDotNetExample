@@ -13,7 +13,7 @@ const ProductListItem: React.FC<Props> = ({ product }) => {
           {product.id}
         </TableCell>
         <TableCell>{product.name}</TableCell>
-        <TableCell align="right">{product.unitPrice}</TableCell>
+        <TableCell align="right">{product.price}</TableCell>
         <TableCell align="right">
           <Button href={`/products/${product.id}`}>Edit</Button>
         </TableCell>

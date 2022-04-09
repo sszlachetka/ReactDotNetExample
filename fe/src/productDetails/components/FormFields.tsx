@@ -3,7 +3,7 @@ import { DatePicker, TextField } from "mui-rff";
 
 const formFields: JSX.Element[] = [
   <TextField name="name" label="Product name" />,
-  <TextField name="unitPrice" label="Price $" />,
+  <TextField name="price" label="Price $" />,
   <DatePicker
     name="availableFrom"
     label="Available from"

@@ -1,23 +1,19 @@
+import { Button } from "@mui/material";
 import { Form } from "react-final-form";
 import FormFields from "./FormFields";
 
 export interface ProductDetailsFormState {
   id: string;
   name: string;
-  unitPrice: number;
+  price: number;
   availableFrom: Date;
 }
 
 interface Props {
   initialState: ProductDetailsFormState;
+  onSubmit: (values: ProductDetailsFormState) => void;
 }
 
-// yes, this can even be async!
-async function onSubmit(values: ProductDetailsFormState) {
-  console.log(values);
-}
-
-// yes, this can even be async!
 async function validate(values: ProductDetailsFormState) {
   if (!values.name) {
     return { name: "Name is mandatory." };
@@ -25,7 +21,7 @@ async function validate(values: ProductDetailsFormState) {
   return;
 }
 
-const ProductDetailsForm: React.FC<Props> = ({ initialState }) => {
+const ProductDetailsForm: React.FC<Props> = ({ initialState, onSubmit }) => {
   return (
     <Form
       onSubmit={onSubmit}
@@ -34,6 +30,7 @@ const ProductDetailsForm: React.FC<Props> = ({ initialState }) => {
       render={({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit} noValidate>
           <FormFields />
+          <Button type="submit">Submit</Button>
           <pre>{JSON.stringify(values)}</pre>
         </form>
       )}

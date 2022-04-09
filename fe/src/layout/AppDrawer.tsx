@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const AppDrawer: React.FC<Props> = ({ open, closeDrawer }: Props) => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const navigateToHome = () => navigate("/");
   const navigateToProducts = () => navigate("/products");

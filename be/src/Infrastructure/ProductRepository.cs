@@ -21,4 +21,9 @@ public class ProductRepository : IProductRepository
     {
         return _dbContext.Set<Product>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
+
+    public Task SaveChanges(CancellationToken cancellationToken)
+    {
+        return _dbContext.SaveChangesAsync(cancellationToken);
+    }
 }
