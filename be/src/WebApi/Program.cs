@@ -1,4 +1,6 @@
 using Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
 using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,15 @@ builder.Services.AddLogging(logging => logging.AddSimpleConsole(options => optio
 builder.Services.AddInfrastructure();
 builder.Services.AddHostedService<SeedDataService>();
 builder.Services.AddCors();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(options =>
+        {
+            builder.Configuration.Bind("AzureAdB2C", options);
+
+            options.TokenValidationParameters.NameClaimType = "name";
+        },
+        options => { builder.Configuration.Bind("AzureAdB2C", options); });
 
 var app = builder.Build();
 
@@ -27,6 +38,8 @@ app.UseCors(policy =>
         .AllowAnyMethod()
         .AllowAnyHeader();
 });
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapGetProducts();
 app.MapGetProductDetails();

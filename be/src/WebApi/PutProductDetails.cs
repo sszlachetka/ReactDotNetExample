@@ -1,4 +1,5 @@
 ﻿using Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi;
 
@@ -9,12 +10,15 @@ internal static class PutProductDetails
     public static void MapPutProductDetails(this WebApplication app)
     {
         app.MapPut("/products/{id}",
-            async (string id, PutProductDetailsDto dto, IProductRepository productRepository,
+            [Authorize] async (
+                string id,
+                PutProductDetailsDto dto,
+                IProductRepository productRepository,
                 CancellationToken cancellationToken) =>
             {
                 var product = await productRepository.Find(id, cancellationToken);
                 if (product == null) return Results.NotFound();
-                
+
                 product.Name = dto.Name;
                 product.Price = dto.Price;
                 product.AvailableFrom = dto.AvailableFrom;

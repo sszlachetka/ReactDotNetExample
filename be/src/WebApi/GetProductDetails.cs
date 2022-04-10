@@ -1,4 +1,5 @@
 ﻿using Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi;
 
@@ -7,7 +8,10 @@ internal static class GetProductDetails
     public static void MapGetProductDetails(this WebApplication app)
     {
         app.MapGet("/products/{id}",
-            async (string id, IProductRepository productRepository, CancellationToken cancellationToken) =>
+            [Authorize] async (
+                string id,
+                IProductRepository productRepository,
+                CancellationToken cancellationToken) =>
             {
                 var product = await productRepository.Find(id, cancellationToken);
 
