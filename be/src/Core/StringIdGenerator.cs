@@ -1,6 +1,6 @@
 ﻿namespace Core;
 
-internal static class StringId
+internal static class StringIdGenerator
 {
     public static string New() => Guid.NewGuid().ToString()[24..];
 }
