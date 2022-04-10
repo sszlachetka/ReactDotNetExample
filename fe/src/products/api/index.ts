@@ -1,7 +1,5 @@
-import { getProducts } from "./getProducts";
 import { ProductItemDto } from "./ProductItemDto";
+import useProductsApi from "./useProductsApi";
 
-const api = { getProducts };
-
-export default api;
+export default useProductsApi;
 export type { ProductItemDto };

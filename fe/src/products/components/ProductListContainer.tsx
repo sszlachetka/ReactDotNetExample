@@ -7,36 +7,16 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { ProductItemDto } from "products/api";
-import { getProducts } from "products/store";
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { AnyAction } from "redux";
-import { ThunkDispatch } from "redux-thunk";
+import { useSelector } from "react-redux";
 import { ApplicationState } from "store";
 import ProductListItem from "./ProductListItem";
+import useLoadProducts from "./useLoadProducts";
 
-interface PropsFromState {
-  loading: boolean;
-  products: ProductItemDto[];
-  error?: string;
-}
-
-interface PropsFromDispatch {
-  loadProducts: () => void;
-}
-
-type AllProps = PropsFromState & PropsFromDispatch;
-
-const ProductList: React.FC<AllProps> = ({
-  loading,
-  error,
-  products,
-  loadProducts,
-}) => {
-  useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+const ProductListContainer: React.FC = () => {
+  const { loading, error, data } = useSelector(
+    (state: ApplicationState) => state.products
+  );
+  useLoadProducts();
 
   if (loading) return <>Loading...</>;
   if (error) return <>{error}</>;
@@ -53,7 +33,7 @@ const ProductList: React.FC<AllProps> = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map(product => (
+          {data.map(product => (
             <ProductListItem key={product.id} product={product} />
           ))}
         </TableBody>
@@ -61,24 +41,5 @@ const ProductList: React.FC<AllProps> = ({
     </TableContainer>
   );
 };
-
-const mapStateToProps = ({ products }: ApplicationState) => ({
-  loading: products.loading,
-  error: products.error,
-  products: products.data,
-});
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction>) => {
-  return {
-    loadProducts: () => {
-      dispatch(getProducts());
-    },
-  };
-};
-
-const ProductListContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductList);
 
 export default ProductListContainer;

@@ -1,5 +1,4 @@
-import api, { ProductItemDto } from "products/api";
-import { Dispatch } from "redux";
+import { ProductItemDto } from "products/api";
 
 export enum ProductsActionTypes {
   GET_START = "@@products/GET_START",
@@ -45,20 +44,5 @@ export const getProductsFailure = (error: string): GetProductsErrorAction => {
   return {
     type: ProductsActionTypes.GET_ERROR,
     error: error,
-  };
-};
-
-export const getProducts = () => {
-  return (dispatch: Dispatch) => {
-    dispatch(getProductsStart());
-
-    return api
-      .getProducts()
-      .then((response) => dispatch(getProductsSuccess(response.data)))
-      .catch((error) =>
-        dispatch(
-          getProductsFailure(`Error fetching products: ${error.message}`)
-        )
-      );
   };
 };

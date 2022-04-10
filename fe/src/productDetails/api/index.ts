@@ -1,9 +1,6 @@
-import { getProductDetails } from "./getProductDetails";
 import { ProductDetailsDto } from "./ProductDetailsDto";
-import { putProductDetails } from "./putProductDetails";
 import { PutProductDetailsDto } from "./PutProductDetailsDto";
+import useProductDetailsApi from "./useProductDetailsApi";
 
-const api = { getProductDetails, putProductDetails };
-
-export default api;
+export default useProductDetailsApi;
 export type { ProductDetailsDto, PutProductDetailsDto };
