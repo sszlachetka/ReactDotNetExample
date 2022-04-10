@@ -4,10 +4,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import configureStore from "store";
 import ReactDOM from "react-dom";
-import { PublicClientApplication } from "@azure/msal-browser";
-import { msalConfig } from "./authentication";
+import { createMsalInstance } from "authentication";
 
-const msalInstance = new PublicClientApplication(msalConfig);
+const msalInstance = createMsalInstance();
 const store = configureStore();
 const container = document.getElementById("root");
 ReactDOM.render(

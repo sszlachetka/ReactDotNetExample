@@ -1,5 +1,6 @@
 import MsalInfrastructure from "./MsalInfrastructure";
-import { msalConfig } from "./authConfig";
 import Login from "./Login";
+import createMsalInstance from "./createMsalInstance";
+import useAcquireAccessToken from "./useAcquireAccessToken";
 
-export { MsalInfrastructure, msalConfig, Login };
+export { MsalInfrastructure, Login, createMsalInstance, useAcquireAccessToken };
