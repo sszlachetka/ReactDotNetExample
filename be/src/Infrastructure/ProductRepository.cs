@@ -17,7 +17,7 @@ public class ProductRepository : IProductRepository
         return _dbContext.Set<Product>().ToArrayAsync(cancellationToken);
     }
 
-    public Task<Product?> Find(string id, CancellationToken cancellationToken)
+    public Task<Product?> Find(ProductId id, CancellationToken cancellationToken)
     {
         return _dbContext.Set<Product>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
