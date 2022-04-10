@@ -14,7 +14,7 @@ internal static class GetProducts
     {
         app.MapGet("/products",
             [Authorize]
-            [RequiredScope("api://ssz-webapi1/products.read")]
+            [RequiredScope("https://suliborszlachetka.onmicrosoft.com/webapi1/product.read")]
             [ProducesResponseType(typeof(ProductListItemDto[]), (int)HttpStatusCode.OK)]
             async (IProductRepository productRepository, CancellationToken cancellationToken) =>
             {

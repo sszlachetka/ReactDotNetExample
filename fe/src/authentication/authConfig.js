@@ -12,14 +12,14 @@ import { LogLevel } from "@azure/msal-browser";
  */
 export const b2cPolicies = {
   names: {
-    signUpSignIn: "B2X_1_signupsignin1",
+    signUpSignIn: "B2C_1_sisu1",
     forgotPassword: "b2c_1_reset",
     editProfile: "b2c_1_edit_profile",
   },
   authorities: {
     signUpSignIn: {
       authority:
-        "https://suliborszlachetkaoutlook.b2clogin.com/suliborszlachetkaoutlook.onmicrosoft.com/B2X_1_signupsignin1",
+        "https://suliborszlachetka.b2clogin.com/suliborszlachetka.onmicrosoft.com/B2C_1_sisu1",
     },
     forgotPassword: {
       authority:
@@ -31,7 +31,7 @@ export const b2cPolicies = {
         "https://suliborszlachetkaoutlook.b2clogin.com/suliborszlachetkaoutlook.onmicrosoft.com/b2c_1_edit_profile",
     },
   },
-  authorityDomain: "suliborszlachetkaoutlook.b2clogin.com",
+  authorityDomain: "suliborszlachetka.b2clogin.com",
 };
 
 /**
@@ -41,7 +41,7 @@ export const b2cPolicies = {
  */
 export const msalConfig = {
   auth: {
-    clientId: "02526aea-e391-43bb-9719-ce66f1a3638c", // This is the ONLY mandatory field that you need to supply.
+    clientId: "20271454-045a-41a4-abdf-d3a5f462c453", // This is the ONLY mandatory field that you need to supply.
     authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
     knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
     redirectUri: "/auth-response", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
@@ -84,7 +84,7 @@ export const msalConfig = {
 export const protectedResources = {
   products: {
     endpoint: "https://localhost:7254/products",
-    scopes: ["api://ssz-webapi1/products.read"], // e.g. api://xxxxxx/access_as_user
+    scopes: ["https://suliborszlachetka.onmicrosoft.com/webapi1/product.read"], // e.g. api://xxxxxx/access_as_user
   },
 };
 
