@@ -1,12 +1,14 @@
-import { Container, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 
 const Home: React.FC = () => {
   return (
-    <Container>
-      <Typography variant="h3" component="div">
-        Home page
-      </Typography>
-    </Container>
+    <Grid container justifyContent="center">
+      <Grid item>
+        <Typography variant="h3" component="div">
+          Home page
+        </Typography>
+      </Grid>
+    </Grid>
   );
 };
 
