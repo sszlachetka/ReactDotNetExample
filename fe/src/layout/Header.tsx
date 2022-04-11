@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import { useState } from "react";
 import { AppDrawer } from "./AppDrawer";
-import { Login } from "authentication";
+import { SignInSignOut } from "authentication";
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Inventory
           </Typography>
-          <Login />
+          <SignInSignOut />
         </Toolbar>
       </AppBar>
       <AppDrawer open={isOpen} closeDrawer={toggleDrawer(false)} />

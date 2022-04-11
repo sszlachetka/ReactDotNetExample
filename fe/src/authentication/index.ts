@@ -1,6 +1,11 @@
 import MsalInfrastructure from "./MsalInfrastructure";
-import Login from "./Login";
+import SignInSignOut from "./SignInSignOut";
 import createMsalInstance from "./createMsalInstance";
 import useAcquireAccessToken from "./useAcquireAccessToken";
 
-export { MsalInfrastructure, Login, createMsalInstance, useAcquireAccessToken };
+export {
+  MsalInfrastructure,
+  SignInSignOut,
+  createMsalInstance,
+  useAcquireAccessToken,
+};

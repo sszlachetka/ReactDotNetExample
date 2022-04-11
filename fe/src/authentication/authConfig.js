@@ -15,7 +15,7 @@ export const msalConfig = {
     authority:
       "https://suliborszlachetka.b2clogin.com/suliborszlachetka.onmicrosoft.com/B2C_1_sisu1",
     knownAuthorities: ["suliborszlachetka.b2clogin.com"],
-    redirectUri: "/auth-response",
+    redirectUri: "/",
     postLogoutRedirectUri: "/",
     navigateToLoginRequestUrl: false,
   },
